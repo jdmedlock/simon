@@ -13,7 +13,7 @@ must repeat. The length of the sequence is incremented in each successive
 round of play.
 
 An example of a Simon simulator can be found
-[here](https://codepen.io/FreeCodeCamp/full/obYBjE.)
+[here](https://codepen.io/FreeCodeCamp/full/obYBjE) .
 
 ##User Stories
 A successful implementation of the Simon game must satisfy the following
