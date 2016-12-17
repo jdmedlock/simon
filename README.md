@@ -60,45 +60,47 @@ as they are of different categories.
 | Game on  | The game is powered on and game play modes are ready for use |
 | Game off | The game is powered off                                      |
 
-Mode	Description
-Game-Inprogress	Game play is in progress.
-Game-Waiting	Game play is waiting to start
-Play-Normal	Normal game play rules are in effect
-Play-Strict	Strict game play rules are in effect
+| Mode	         | Description
+|-----------------|--------------------------------------|
+| Game-Inprogress	| Game play is in progress             |
+| Game-Waiting	   | Game play is waiting to start        |
+| Play-Normal	   | Normal game play rules are in effect |
+| Play-Strict	   | Strict game play rules are in effect |
 
 ###State/Mode Transitions
-Starting State/Mode	Allowable Actions	Next State/Mode
-Game-Off	On	Game-On
-Game-On	• Strict	• Play-Strict
-	• Start	• Play-Normal
-	• Off	• Game-Off
-Play-Normal	• Start	• Play-Normal
-	• Strict (enable)	• Play-Strict
-	• Off	• Game-Off
-	• Game play	•
-Play-Strict	• Start	• Play-Normal
-	• Strict (disable)	• Play-Strict
-	• Off	• Game-Off
-	• Game play
+|Starting State/Mode	| Allowable Actions	| Next State/Mode |
+|--------------------|--------------------|-----------------|
+|Game-Off	         | • On	            | • Game-On       |
+|Game-On	            | • Strict	         | • Play-Strict   |
+|                  	| • Start	         | • Play-Normal   |
+|     	            | • Off	            | • Game-Off      |
+|Play-Normal	      | • Start	         | • Play-Normal   |
+|	    	            | • Strict (enable)	| • Play-Strict   |
+|    	               | • Off	            | • Game-Off      |
+|	    	            | • Game play        |                 |
+|Play-Strict	      | • Start	         | • Play-Normal   |
+|    	               | • Strict (disable)	| • Play-Strict   |
+|    	               | • Off	            | • Game-Off      |
+|    	               | • Game play        |                 |
 
 ###User Interface Rules:
-Component	Purpose	#	Action	Desired Result
-Button - Off/On	Turns the game off	1	Off	• No other buttons functional while in off state
-
-Button - Off/On	Turn the game on	2	On	• All game controls functional
-				• The game can be turned off at any point as long as it is on.
-Button - Start	Start new game	1	Starts a new round of play	• A new round of play is started with a sequence of one
-				• Start can be pressed at any time as long as the game is turned on
-Button - Strict	Enable Strict mode	1	Enables strict game play mode	• If an incorrect response is made the game notifies the player and it restarts at a new random series of button presses.
-				• The new series has the same length as the prior sequence
-Button - Strict	Disable Strict mode	2	Disable strict game play mode	• Return to normal game play mode
-				• If the wrong button is pressed the player is notified and that series of button presses starts again to remind the player of the pattern so she can try again
-Count	Game count	1	Displays the number of steps in the current sequence. Two digit max.	• Updated at the start of each round of play
-Count	Error notification	2	Displays a sentinel if an error occurs	• For example, exclamation points.
-				• After 2 seconds returns to displaying number of steps in the current series.
-Button - Response	Main game play interface	1	Challenge playback	• The current round of color/sound sequences are played to challenge the users memory.
-				• Each time a series of button presses is correctly entered, the same series of button presses is echoed back, but with an additional step
-Button - Response	Main game play interface	2	Player response to challenge playback	• The player presses the buttons in the same sequence as the previous challenge playback to win.
-				• I hear a sound that corresponds to each button both when the series of button presses plays, and when I personally press a button.
-				• If the wrong button is pressed the player is notified and that series of button presses starts again to remind the player of the pattern so she can try again
-				• A win is a series of 20 correctly entered steps. I am notified of my victory, then the game starts over.
+| Component	      | Purpose	        |#| Action  | Desired Result |
+|-----------------|-------------------|-|---------|----------------|
+| Button - Off/On	|Turns the game off |1|	Off	  | • No other buttons functional while in off state |
+| Button - Off/On	|Turn the game on	  |2|	On	     | • All game controls functional |
+|				      |                   | |         | • The game can be turned off at any point as long as it is on. |
+| Button - Start	|Start new game	  |1|	Starts a new round of play	|• A new round of play is started with a sequence of one |
+|				      |                   | |         | • Start can be pressed at any time as long as the game is turned on
+| Button - Strict	|Enable Strict mode |1|	Enables strict game play mode	| • If an incorrect response is made the game notifies the player and it restarts at a new random series of button presses. |
+|				      |                   | |         | • The new series has the same length as the prior sequence |
+| Button - Strict	|Disable Strict mode|2|	Disable strict game play mode	|• Return to normal game play mode |
+|				      |                   | |         | • If the wrong button is pressed the player is notified and that series of button presses starts again to remind the player of the pattern so she can try again|
+| Count	         |Game count	        |1|	Displays the number of steps in the current sequence. Two digit max.	| • Updated at the start of each round of play |
+| Count	         |Error notification |2|	Displays a sentinel if an error occurs | • For example, exclamation points.|
+|				      |                   | |         | • After 2 seconds returns to displaying number of steps in the current series. |
+| Button - Player Response	|Main game play interface|1| Challenge playback	| • The current round of color/sound sequences are played to challenge the users memory.|
+|				      |                   | |         | • Each time a series of button presses is correctly entered, the same series of button presses is echoed back, but with an additional step|
+| Button - Player Response	|Main game play interface	|2| Player response to challenge playback | • The player presses the buttons in the same sequence as the previous challenge playback to win. |
+|				      |                   | |         |				• I hear a sound that corresponds to each button both when the series of button presses plays, and when I personally press a button. |
+|				      |                   | |         |				• If the wrong button is pressed the player is notified and that series of button presses starts again to remind the player of the pattern so she can try again |
+|				      |                   | |         |				• A win is a series of 20 correctly entered steps. I am notified of my victory, then the game starts over. |
