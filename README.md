@@ -90,7 +90,7 @@ as they are of different categories.
 | Button - Off/On	|Turn the game on	  |2|	On	     | • All game controls functional |
 |				      |                   | |         | • The game can be turned off at any point as long as it is on. |
 | Button - Start	|Start new game	  |1|	Starts a new round of play	|• A new round of play is started with a sequence of one |
-|				      |                   | |         | • Start can be pressed at any time as long as the game is turned on
+|				      |                   | |         | • Start can be pressed at any time as long as the game is turned on |
 | Button - Strict	|Enable Strict mode |1|	Enables strict game play mode	| • If an incorrect response is made the game notifies the player and it restarts at a new random series of button presses. |
 |				      |                   | |         | • The new series has the same length as the prior sequence |
 | Button - Strict	|Disable Strict mode|2|	Disable strict game play mode	|• Return to normal game play mode |
