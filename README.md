@@ -87,7 +87,7 @@ as they are of different categories.
 ###User Interface Rules:
 
 | Component	      | Purpose	          | # | Action                        | Desired Result    |
-|-----------------|-------------------|---|-------------------------------|-------------------|
+|-----------------|-----------------------|---|-------------------------------|-------------------|
 | Button - Off/On	|Turns the game off | 1 |	Off	                          | • No other buttons functional while in off state |
 | Button - Off/On	|Turn the game on	  | 2 |	On	                          | • All game controls functional |
 |				          |                   |   |                               | • The game can be turned off at any point as long as it is on. |
