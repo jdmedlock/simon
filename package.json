@@ -1,0 +1,28 @@
+{
+  "name": "simon",
+  "version": "1.0.0",
+  "description": "freeCodeCamp Simon Game challenge",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdmedlock/simon.git"
+  },
+  "author": "Jim Medlock",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jdmedlock/simon/issues"
+  },
+  "homepage": "https://github.com/jdmedlock/simon#readme",
+  "devDependencies": {
+    "git-scripts": "^0.2.1",
+    "surge": "^0.18.0"
+  },
+  "git": {
+    "scripts": {
+      "pre-push": "surge --project ./ --domain mysimon.surge.sh"
+    }
+  }
+}
