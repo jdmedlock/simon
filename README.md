@@ -81,7 +81,7 @@ as they are of different categories.
 |	    	            | • Game play        |                 |
 |Play-Strict	      | • Start	         | • Play-Normal   |
 |    	               | • Strict (disable)	| • Play-Strict   |
-|    	               | • Off	            | • Game-Off      |
+|    	               | • Off <br/>• Game play | • Game-Off      |
 |    	               | • Game play        |                 |
 
 ###User Interface Rules:
