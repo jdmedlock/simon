@@ -1,0 +1,103 @@
+/*
+File Name: simon.css
+Date: 12/17/2016
+Programmer: Jim Medlock
+*/
+
+html {
+    font-family: 'Josefin Sans', serif;
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    background-color: #505455;
+    color: #8B8E8F;
+    margin-top: 0px;
+    margin-bottom: 60px;
+}
+
+h3 {
+    color: white;
+    margin-top: 5px;
+}
+
+th {
+    color: black;
+    text-align: center;
+}
+
+/* ---------------------------------------------
+   Common elements used throughout the page
+   --------------------------------------------- */
+
+.si-bar-row {
+    display:block;
+    margin-top: 10px;
+}
+
+.si-btn {
+    background-color: #CDE0E2;
+    border-color: black;
+    color: #225F65;
+    font-size: small;
+    margin-right: 10px;
+}
+
+.si-small-text {
+    font-size: 90%;
+}
+
+
+/* ---------------------------------------------
+   Page title
+   --------------------------------------------- */
+
+.si-jumbotron {
+    background-color: #659599;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.50);
+    color: #808D94;
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+
+/* ---------------------------------------------
+   Game Board
+   --------------------------------------------- */
+
+.si-game-board {
+    margin-bottom: 10px;
+}
+
+
+/* ---------------------------------------------
+   Page footer
+   --------------------------------------------- */
+
+.si-bottom-bar {
+    bottom: 0;
+    background-color: #0A3C41;
+    color: white;
+    height: 60px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    position: absolute;
+    width: 100%;
+}
+
+.si-bottom-bar a {
+    color: white;
+    font-size: small;
+    margin-left: 0px;
+    padding-top: 0px;
+    padding-left: 3px;
+    padding-right: 2px;
+}
