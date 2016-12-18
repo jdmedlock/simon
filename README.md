@@ -102,7 +102,7 @@ as they are of different categories.
 |				          |                   |   |                               | • After 2 seconds returns to displaying number of steps in the current series. |
 | Button - Player Response	|Main game play interface | 1 | Challenge playback	| • The current round of color/sound sequences are played to challenge the users memory. |
 |				          |                   |   |                               | • Each time a series of button presses is correctly entered, the same series of button presses is echoed back, but with an additional step |
-| Button - Player Response	|Main game play interface	|2| Player response to challenge playback | • The player presses the buttons in the same sequence as the previous challenge playback to win. <br/> 	• I hear a sound that corresponds to each button both when the series of button presses plays, and when I personally press a button.|
-|				          |                   |   |                               |	• I hear a sound that corresponds to each button both when the series of button presses plays, and when I personally press a button. |
-|				          |                   |   |                               |	• If the wrong button is pressed the player is notified and that series of button presses starts again to remind the player of the pattern so she can try again |
-|				          |                   |   |                               |	• A win is a series of 20 correctly entered steps. I am notified of my victory, then the game starts over. |
+| Button - Player Response	|Main game play interface	|2| Player response to challenge playback | • The player presses the buttons in the same sequence as the previous challenge playback to win. <br/>
+ 	• I hear a sound that corresponds to each button both when the series of button presses plays, and when I personally press a button. <br/>
+   • If the wrong button is pressed the player is notified and that series of button presses starts again to remind the player of the pattern so she can try again <br/>
+   • A win is a series of 20 correctly entered steps. I am notified of my victory, then the game starts over. |
