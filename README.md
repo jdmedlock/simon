@@ -76,13 +76,8 @@ as they are of different categories.
 |Starting <br/>State/Mode	| Allowable Actions	| Next State/Mode |
 |------------|--------------------|-----------------|
 |Game-Off	   | • On	              | • Game-On       |
-|Game-On	   | • Strict	          | • Play-Strict   |
-|            | • Start	          | • Play-Normal   |
-|     	     | • Off	            | • Game-Off      |
-|Play-Normal | • Start	          | • Play-Normal   |
-|	    	     | • Strict (enable)	| • Play-Strict   |
-|    	       | • Off	            | • Game-Off      |
-|	    	     | • Game play        |                 |
+|Game-On	   | • Strict	<br/> • Start <br/> • Off | • Play-Strict <br/> • Play-Normal <br/> • Game-Off |
+|Play-Normal | • Start <br/> • Strict (enable) <br/> • Off <br/> • Game play | • Play-Normal <br/> • Play-Strict <br/> • Game-Off |
 |Play-Strict | • Start <br/> • Strict (disable) <br/> • Off <br/> • Game play	| • Play-Normal <br/> • Play-Strict <br/> • Game-Off |
 
 ####User Interface Rules:
