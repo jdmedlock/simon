@@ -13,7 +13,7 @@ must repeat. The length of the sequence is incremented in each successive
 round of play.
 
 An example of a Simon simulator can be found
-[here](https://github.com/jdmedlock/simon/blob/master/Simon_Game_Example.png?raw=true).
+[here](https://codepen.io/FreeCodeCamp/full/obYBjE) .
 
 ###User Stories
 A successful implementation of the Simon game must satisfy the following
@@ -39,7 +39,7 @@ Meeting User Story 3 requires the following sound resources:
 ##Design
 
 ###Example Game Image:
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![alt text](https://github.com/jdmedlock/simon/blob/master/Simon_Game_Example.png?raw=true "Simon Game Example")
 
 ###States & Modes
 
