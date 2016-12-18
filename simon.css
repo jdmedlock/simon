@@ -27,12 +27,13 @@ th {
     text-align: center;
 }
 
+
 /* ---------------------------------------------
    Common elements used throughout the page
    --------------------------------------------- */
 
 .si-bar-row {
-    display:block;
+    display: block;
     margin-top: 10px;
 }
 
@@ -45,7 +46,7 @@ th {
 }
 
 .si-small-text {
-    font-size: 90%;
+    font-size: 50%;
 }
 
 
@@ -73,8 +74,82 @@ th {
    Game Board
    --------------------------------------------- */
 
-.si-game-board {
-    margin-bottom: 10px;
+.si-graphic {
+    height: 100%;
+    position: relative;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.si-outer-circle {
+    background: black;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    height: 460px;
+    width: 460px;
+}
+
+.si-outer-circle-border {
+    position: relative;
+    border: 1px solid gray;
+    border-radius: 230px;
+    overflow: hidden;
+}
+
+.si-outer-circle-fill {
+    top: 0;
+    left: 0;
+    background-color: black;
+}
+
+.si-inner-circle {
+    background: yellow;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 115px;
+    height: 210px;
+    position: absolute;
+    vertical-align: middle;
+    width: 210px;
+}
+
+.si-inner-circle-border {
+    border: 1px solid gray;
+    border-radius: 105px;
+    overflow: hidden;
+    position: relative;
+}
+
+.si-inner-circle-fill {
+    background-color: silver;
+}
+
+.si-inner-circle > h2 {
+    color: black;
+    margin-top: 20px;
+}
+
+.si-score-display {
+    background: black;
+    border: 1px solid gray;
+    color: red;
+    height: 35px;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    width: 60px;
+}
+
+.si-score-display > h3 {
+    color: red;
+}
+
+.si-graphic > h5 {
+    color: black;
 }
 
 

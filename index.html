@@ -1,0 +1,85 @@
+<!--
+File Name: index.html
+Date: 12/17/2016
+Programmer: Jim Medlock
+URL: simon.surge.sh
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="author" content="YOUR_NAME">
+    <meta name="subject" content="HTML WEBPAGE TITLE">
+    <meta name="datecreated" content="20161129">
+    <meta name="datereviewed" content="20161129">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simon</title>
+
+    <!-- ALL CSS GOES IN THE META HEAD SECTION -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css" integrity="sha256-uHu2MAd1LvCOVEAhvMld4LpJi7dUGS7GVzvG/5B3hlo=" crossorigin="anonymous" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="simon.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Main webpage body -->
+    <div class="container-fluid">
+
+        <!----------------->
+        <!-- Page Banner -->
+        <!----------------->
+        <div class="jumbotron si-jumbotron">
+            <h3 class="si-page-title">Simon</h3>
+        </div>
+        <!-- End of jumbotron -->
+
+        <!-------------------------->
+        <!-- Game Control buttons -->
+        <!-------------------------->
+        <div class="row text-center">
+            <div class="col-xs-12">
+                <div class="container">
+                    <div class="si-graphic si-outer-circle si-outer-circle-border si-outer-circle-fill">
+                      <div class="si-graphic si-inner-circle si-inner-circle-border si-inner-circle-fill">
+                        <div class="si-score-display">
+                          <h3>00</h3>
+                        </div>
+                        <h5>Count</h5>
+                        <h2>Simon<i class="fa fa-registered si-small-text" aria-hidden="true"></i></h2>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End si-simon -->
+
+        <!-------------------------------->
+        <!-- Bottom Bar - Sticky Footer -->
+        <!-------------------------------->
+        <div class="container si-bottom-bar">
+            <div class="row text-center">
+                <div class="col-xs-12">
+                    <h6>&copy;2016 Jim Medlock, All Rights Reserved</h6>
+                    <a href="http://codepen.io/jdmedlock" target="_blank">
+                        <i class="fa fa-codepen"></i>&nbsp;CodePen</a>
+                    <a href="http://www.freecodecamp.com/jdmedlock" target="_blank">
+                        <i class="fa fa-fire"></i>&nbsp;freeCodeCamp</a>
+                    <a href="https://github.com/jdmedlock" target="_blank">
+                        <i class="fa fa-github"></i>&nbsp;Github</a>
+                    <a href="http://twitter.com/jd_medlock" target="_blank">
+                        <i class="fa fa-twitter"></i>&nbsp;Twitter</a>
+                </div>
+            </div>
+        </div>
+        <!-- end of Bottom Bar -->
+
+        <!-- ALL JAVASCRIPT LINKS GOES RIGHT BEFORE THE ENDING BODY TAG -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="simon.js"></script>
+</body>
+
+</html>
