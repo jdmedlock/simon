@@ -68,6 +68,7 @@ as they are of different categories.
 | Play-Strict	   | Strict game play rules are in effect |
 
 ###State/Mode Transitions
+
 |Starting State/Mode	| Allowable Actions	| Next State/Mode |
 |--------------------|--------------------|-----------------|
 |Game-Off	         | • On	            | • Game-On       |
@@ -84,6 +85,7 @@ as they are of different categories.
 |    	               | • Game play        |                 |
 
 ###User Interface Rules:
+
 | Component	      | Purpose	        |#| Action  | Desired Result |
 |-----------------|-------------------|-|---------|----------------|
 | Button - Off/On	|Turns the game off |1|	Off	  | • No other buttons functional while in off state |
