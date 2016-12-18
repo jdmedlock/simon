@@ -15,7 +15,7 @@ round of play.
 An example of a Simon simulator can be found
 [here](https://codepen.io/FreeCodeCamp/full/obYBjE) .
 
-###User Stories
+###Requirements
 A successful implementation of the Simon game must satisfy the following
 user stories:
 
@@ -38,10 +38,14 @@ Meeting User Story 3 requires the following sound resources:
 
 ##Design
 
-###Example Game Image:
+###User Interface
+
+####Example Game Image:
 ![alt text](https://github.com/jdmedlock/simon/blob/master/Simon_Game_Example.png?raw=true "Simon Game Example")
 
-###States & Modes
+###Model
+
+####States & Modes
 
 The terms state and mode are both used to define the condition of the game at
 any point in time. The difference between the two is that a state is the
@@ -67,24 +71,21 @@ as they are of different categories.
 | Play-Normal	   | Normal game play rules are in effect |
 | Play-Strict	   | Strict game play rules are in effect |
 
-###State/Mode Transitions
+####State/Mode Transitions
 
-|Starting State/Mode	| Allowable Actions	| Next State/Mode |
-|--------------------|--------------------|-----------------|
-|Game-Off	         | • On	            | • Game-On       |
-|Game-On	            | • Strict	         | • Play-Strict   |
-|                  	| • Start	         | • Play-Normal   |
-|     	            | • Off	            | • Game-Off      |
-|Play-Normal	      | • Start	         | • Play-Normal   |
-|	    	            | • Strict (enable)	| • Play-Strict   |
-|    	               | • Off	            | • Game-Off      |
-|	    	            | • Game play        |                 |
-|Play-Strict	      | • Start	         | • Play-Normal   |
-|    	               | • Strict (disable)	| • Play-Strict   |
-|    	               | • Off 	            | • Game-Off      |
-|    	               | • Game play        |                 |
+|Starting <br/>State/Mode	| Allowable Actions	| Next State/Mode |
+|------------|--------------------|-----------------|
+|Game-Off	   | • On	              | • Game-On       |
+|Game-On	   | • Strict	          | • Play-Strict   |
+|            | • Start	          | • Play-Normal   |
+|     	     | • Off	            | • Game-Off      |
+|Play-Normal | • Start	          | • Play-Normal   |
+|	    	     | • Strict (enable)	| • Play-Strict   |
+|    	       | • Off	            | • Game-Off      |
+|	    	     | • Game play        |                 |
+|Play-Strict | • Start <br/> • Strict (disable) <br/> • Off <br/> • Game play	| • Play-Normal <br/> • Play-Strict <br/> • Game-Off |
 
-###User Interface Rules:
+####User Interface Rules:
 
 | Component	      | Purpose	            | # | Action                        | Desired Result    |
 |-----------------|-----------------------|---|-------------------------------|-------------------|
