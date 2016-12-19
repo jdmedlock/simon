@@ -81,6 +81,11 @@ th {
     width: 100%;
 }
 
+.si-graphic > h5 {
+    color: black;
+    margin-top: 2px;
+}
+
 .si-outer-circle {
     background: black;
     margin-bottom: auto;
@@ -134,9 +139,9 @@ th {
 
 .si-score-display {
     background: black;
-    border: 1px solid gray;
+    border: 1px solid saddlebrown;
     color: red;
-    height: 35px;
+    height: 36px;
     margin-bottom: auto;
     margin-left: auto;
     margin-right: auto;
@@ -148,10 +153,32 @@ th {
     color: red;
 }
 
-.si-graphic > h5 {
-    color: black;
+.si-start-circle {
+    background: firebrick;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    height: 16px;
+    position: absolute;
+    vertical-align: middle;
+    width: 16px;
 }
 
+.si-start-circle-border {
+    border: 1px solid saddlebrown;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.si-start-circle-fill {
+    background-color: firebrick;
+}
+
+.si-start-circle > h5 {
+    color: black;
+}
 
 /* ---------------------------------------------
    Page footer
