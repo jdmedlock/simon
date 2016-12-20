@@ -114,7 +114,7 @@ th {
     margin-bottom: auto;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 115px;
+    margin-top: 125px;
     height: 210px;
     position: absolute;
     vertical-align: middle;
@@ -155,19 +155,20 @@ th {
 
 .si-start-circle {
     background: firebrick;
+    color: black;
     margin-bottom: auto;
     margin-left: auto;
     margin-right: auto;
     margin-top: 5px;
-    height: 16px;
+    height: 26px;
     position: absolute;
     vertical-align: middle;
-    width: 16px;
+    width: 52px;
 }
 
 .si-start-circle-border {
     border: 1px solid saddlebrown;
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
     position: relative;
 }
@@ -178,6 +179,18 @@ th {
 
 .si-start-circle > h5 {
     color: black;
+}
+
+.arc {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: auto;
+    margin-bottom: auto;
+    width: 440px;
+    height: 440px;
+    border-radius: 50%;
+    border: 100px dashed red;
+    position: absolute;
 }
 
 /* ---------------------------------------------
