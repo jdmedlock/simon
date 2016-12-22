@@ -98,7 +98,7 @@ th {
 
 .si-outer-circle-border {
     position: relative;
-    border: 1px solid gray;
+    border: 2px solid gray;
     border-radius: 230px;
     overflow: hidden;
 }
@@ -182,7 +182,7 @@ th {
 	width: 415px;
 	height: 415px;
 	margin-top: 22px;
-  margin-left: 22px;
+  margin-left: 20px;
   margin-right: auto;
   margin-bottom: auto;
 }
