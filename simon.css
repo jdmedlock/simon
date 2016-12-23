@@ -78,14 +78,16 @@ th {
 .si-graphic > h5 {
     color: black;
     margin-top: 2px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .si-outer-circle {
     background: black;
-    margin-bottom: auto;
+    margin-bottom: 1%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20px;
+    margin-top: 1%;
     height: 460px;
     width: 460px;
 }

@@ -36,18 +36,17 @@ URL: simon.surge.sh
         </div>
         <!-- End of jumbotron -->
 
-        <!-------------------------->
-        <!-- Game Control buttons -->
-        <!-------------------------->
+        <!------------------>
+        <!-- Game Display -->
+        <!------------------>
         <div class="row text-center">
           <div class="col-xs-10">
-            <div class="container">
                 <div class="si-graphic si-outer-circle si-outer-circle-border si-outer-circle-fill">
                   <div class="si-main">
-                    <div class="si-quarter si-quarter1 si-btn-red"></div>
-                    <div class="si-quarter si-quarter2"></div>
-                    <div class="si-quarter si-quarter3"></div>
-                    <div class="si-quarter si-quarter4"></div>
+                    <div id="si-btn-red"    class="si-quarter si-quarter1"></div>
+                    <div id="si-btn-blue"   class="si-quarter si-quarter2"></div>
+                    <div id="si-btn-yellow" class="si-quarter si-quarter3"></div>
+                    <div id="si-btn-green"  class="si-quarter si-quarter4"></div>
                     <div class="si-cutout"></div>
                     <div class="si-inset-circle si-inset-circle-border"></div>
                   </div>
@@ -60,21 +59,20 @@ URL: simon.surge.sh
                     <div class="row text-center">
                       <div class="col-xs-offset-1 col-xs-10">
                         <span>
-                          <button type="button" class="btn btn-primary btn-responsive si-btn-circle si-btn-circle-fill si-btn-circle-border pull-left">Start</button>
-                          <button type="button" class="btn btn-primary btn-responsive si-btn-circle si-btn-circle-fill si-btn-circle-border pull-right">Strict</button>
+                          <button type="button" id="si-btn-start" class="btn btn-primary btn-responsive si-btn-circle si-btn-circle-fill si-btn-circle-border pull-left">Start</button>
+                          <button type="button" id="si-btn-strict" class="btn btn-primary btn-responsive si-btn-circle si-btn-circle-fill si-btn-circle-border pull-right">Strict</button>
                         </span>
                       </div>
                     </div>
                     <div class="row text-center">
                       <div class="col-xs-12">
-                        <button type="button" class="btn btn-primary btn-responsive si-btn-circle si-btn-circle-fill si-btn-circle-border">On</button>
+                        <button type="button" id="si-btn-onoff" class="btn btn-primary btn-responsive si-btn-circle si-btn-circle-fill si-btn-circle-border">On</button>
                       </div>
                     </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
             </div>
           </div>    <!-- End si-simon -->
 
