@@ -68,32 +68,33 @@ th {
 
 .si-graphic {
     height: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
+    max-width: min-content;
     position: relative;
+    text-align:center;
     vertical-align: middle;
-    width: 100%;
 }
 
 .si-graphic > h5 {
     color: black;
-    margin-top: 2px;
+    margin-top: 1%;
     margin-left: auto;
     margin-right: auto;
 }
 
 .si-outer-circle {
     background: black;
-    margin-bottom: 1%;
-    margin-top: 1%;
-    height: 460px;
-    width: 460px;
+    height: 420px;
+    margin:auto;
+    margin-top: 2%;
+    vertical-align: middle;
+    width: 420px;
 }
 
 .si-outer-circle-border {
     position: relative;
-    border: 2px solid gray;
-    border-radius: 230px;
+    border: 2px solid silver;
+    border-radius: 50%;
     overflow: hidden;
 }
 
@@ -103,21 +104,20 @@ th {
     background-color: black;
 }
 
+/* Game Control Circle */
+
 .si-inner-circle {
     background: silver;
-    margin-bottom: auto;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 120px;
-    height: 210px;
+    height: 50%;
+    margin-top: 26.3%;
     position: absolute;
     vertical-align: middle;
-    width: 210px;
+    width: 50%;
 }
 
 .si-inner-circle-border {
     border: 1px solid gray;
-    border-radius: 105px;
+    border-radius: 100%;
     overflow: hidden;
     position: relative;
 }
@@ -126,6 +126,8 @@ th {
     color: black;
     margin-top: 20px;
 }
+
+/* Inner Circle Controls */
 
 .si-score-display {
     background: black;
@@ -144,16 +146,16 @@ th {
 }
 
 .si-btn-circle {
-    background: firebrick;
+    background-color: hsl(0, 100%, 60%);
     color: black;
     margin-bottom: auto;
     margin-left: auto;
     margin-right: auto;
     margin-top: 5px;
-    height: 26px;
+    height: 28px;
     position: absolute;
     vertical-align: middle;
-    width: 52px;
+    width: 56px;
 }
 
 .si-btn-circle-border {
@@ -163,22 +165,20 @@ th {
     position: relative;
 }
 
-.si-btn-circle-fill {
-    background-color: firebrick;
-}
-
 .si-btn-circle > h5 {
     color: black;
+    margin:auto;
 }
 
+/* Player Response Buttons */
+
 .si-main {
-	position:absolute;;
-	width: 415px;
-	height: 415px;
-	margin-top: 22px;
-  margin-left: 20px;
-  margin-right: auto;
-  margin-bottom: auto;
+	position:absolute;
+   margin-top: 3%;
+   margin-left: 3%;
+   height: 94%;
+   width: 94%;
+   vertical-align: middle;
 }
 
 .si-quarter {
@@ -242,7 +242,7 @@ th {
 }
 
 .si-inset-circle-border {
-    border: 1px solid gray;
+    border: 1px solid silver;
     border-radius: 160px;
     overflow: hidden;
     position: relative;
