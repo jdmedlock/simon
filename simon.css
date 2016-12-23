@@ -67,12 +67,12 @@ th {
    --------------------------------------------- */
 
 .si-graphic {
+    display: inline-block;
     height: 100%;
     margin: auto;
-    max-width: min-content;
     position: relative;
-    text-align:center;
-    vertical-align: middle;
+    text-align: center;
+    width: 100%;
 }
 
 .si-graphic > h5 {
@@ -172,7 +172,7 @@ th {
 
 /* Player Response Buttons */
 
-.si-main {
+.si-player-resp-btns {
 	position:absolute;
    margin-top: 3%;
    margin-left: 3%;
