@@ -170,6 +170,10 @@ th {
     margin:auto;
 }
 
+.si-btn-active {
+   background-color: green !important;
+}
+
 /* Player Response Buttons */
 
 .si-player-resp-btns {
