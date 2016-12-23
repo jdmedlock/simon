@@ -37,14 +37,6 @@ th {
     margin-top: 10px;
 }
 
-.si-btn {
-    background-color: #CDE0E2;
-    border-color: black;
-    color: #225F65;
-    font-size: small;
-    margin-right: 10px;
-}
-
 .si-small-text {
     font-size: 50%;
 }
@@ -76,6 +68,8 @@ th {
 
 .si-graphic {
     height: 100%;
+    margin-left: auto;
+    margin-right: auto;
     position: relative;
     vertical-align: middle;
     width: 100%;
@@ -149,7 +143,7 @@ th {
     color: red;
 }
 
-.si-start-circle {
+.si-btn-circle {
     background: firebrick;
     color: black;
     margin-bottom: auto;
@@ -162,18 +156,18 @@ th {
     width: 52px;
 }
 
-.si-start-circle-border {
+.si-btn-circle-border {
     border: 1px solid saddlebrown;
     border-radius: 10px;
     overflow: hidden;
     position: relative;
 }
 
-.si-start-circle-fill {
+.si-btn-circle-fill {
     background-color: firebrick;
 }
 
-.si-start-circle > h5 {
+.si-btn-circle > h5 {
     color: black;
 }
 
