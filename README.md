@@ -99,22 +99,22 @@ as they are of different categories.
 All Javascript code is contained in simon.js, but is subdivided into the
 following sections:
 
-* Initialization - The <pre>$(document).ready</pre> function definition which
+* Initialization - The <code>$(document).ready</code> function definition which
 establishes the linkage between UI components like buttons to their
 corresponding event handlers.
 
 * Objects - The various JS objects designed to handle events and control the
 game flow. The objects in this program are:
 
-  * onOffButton - Contains the game state, the on/off button event handler, and
+  * <code>onOffButton</code> - Contains the game state, the on/off button event handler, and
 helper functions.
-  * startButton - Contains the game mode, the start button event handler, and
+  * <code>startButton</code> - Contains the game mode, the start button event handler, and
 helper functions.
-  * strictButton - Contains the play mode (strict or normal), the strict button
+  * <code>strictButton</code> - Contains the play mode (strict or normal), the strict button
 event handler, and helper functions.
-  * responseButton - This object is the main controller for game play. It
+  * <code>responseButton</code> - This object is the main controller for game play. It
 contains the event handler for the four player response buttons - red, green,
 blue, and yellow buttons.
-  * gameEngine - Contains the colors in the current series and helper functions
+  * <code>gameEngine</code> - Contains the colors in the current series and helper functions
 to perform tasks such as generating the next entry in the series, comparing the
 most recent player response, playing back the series (with sounds), etc.
