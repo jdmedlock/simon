@@ -360,7 +360,7 @@ th {
     font-weight: bold;
 }
 
-.si-dialog-close:hover, .t3-dialog-close:focus {
+.si-dialog-close:hover, .si-dialog-close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;

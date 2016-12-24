@@ -50,25 +50,25 @@ $(document).ready(function() {
     // Create a button handler for the red player response button
     $("#si-btn-red").click(function(event) {
         console.log("Clicked on the red button");
-        strictButton.buttonPress(this);
+        responseButton.buttonPress(this);
     });
 
     // Create a button handler for the blue player response button
     $("#si-btn-blue").click(function(event) {
         console.log("Clicked on the blue button");
-        strictButton.buttonPress(this);
+        responseButton.buttonPress(this);
     });
 
     // Create a button handler for the green player response button
     $("#si-btn-green").click(function(event) {
         console.log("Clicked on the green button");
-        strictButton.buttonPress(this);
+        responseButton.buttonPress(this);
     });
 
     // Create a button handler for the yellow player response button
     $("#si-btn-yellow").click(function(event) {
         console.log("Clicked on the yellow button");
-        strictButton.buttonPress(this);
+        responseButton.buttonPress(this);
     });
 });
 
@@ -148,6 +148,8 @@ const gameWaiting = false;
 
 let startButton = {
    // Start a new game
+   //
+   // Returns: N/a
    newGame: () => {
      this.gameMode = gameInprogress;
      $("#si-btn-start").removeClass("si-btn-inactive");
@@ -156,6 +158,8 @@ let startButton = {
    },
 
    // Stop the game
+   //
+   // Returns: N/a
    stopGame: () => {
      this.gameMode = gameWaiting;
      $("#si-btn-start").removeClass("si-btn-active");
@@ -193,6 +197,8 @@ const playStrict = true;
 
 let strictButton = {
    // Enable strict play mode
+   //
+   // Returns: N/a
    strictGame: () => {
      this.playMode = playStrict;
      $("#si-btn-strict").removeClass("si-btn-inactive");
@@ -200,6 +206,8 @@ let strictButton = {
    },
 
    // Enable normal play mode
+   //
+   // Returns: N/a
    normalGame: () => {
      this.playMode = playNormal;
      $("#si-btn-strict").removeClass("si-btn-active");
@@ -236,19 +244,24 @@ const colorRed = 0;
 const colorBlue = 1;
 const colorGreen = 2;
 const colorYellow = 3;
+const responseButtonPrefix = "si-btn-";
 
 let responseButton = {
-   // Generate a new color in the current series
+   // Create a new player response series
    //
-   // Returns: New color
-   generateNextColor: () => {
+   // Returns: N/a
+   newPlayerSeries: () => {
+     this.playerSeries = [];
    },
 
-   // Toggles between normal and strict game play
+   // Add the button press to the current set of player responses
    //
    // Returns: N/a
    buttonPress: (thisButton) => {
       if (onOffButton.isGameOn()) {
+        let buttonName = $(thisButton).attr("id");
+        let buttonColor = buttonName.slice(responseButtonPrefix.length);
+        console.log(buttonColor);
       }
    }
 };
@@ -303,11 +316,18 @@ let gameEngine = {
    // Attribution: Mozilla Developer Network Math.random (https://goo.gl/xIe4k)
    //
    // Returns: New color
-   generateNextColor: () => {
+   generateNewColor: () => {
       let min = Math.ceil(colorRed);
       let max = Math.floor(colorYellow);
       let newColor = Math.floor(Math.random() * (max - min + 1)) + min;
       this.playsInSeries.push(newColor);
       return newColor;
+   },
+
+   // Replay the current series
+   //
+   // Returns: N/a
+   replaySeries: () => {
+
    }
 };
