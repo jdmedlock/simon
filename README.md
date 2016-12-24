@@ -93,3 +93,28 @@ as they are of different categories.
 | Count	          |Error notification    | 2 |	Displays a sentinel if an error occurs | • For example, exclamation points. <br/> • After 2 seconds returns to displaying number of steps in the current series. |
 | Button - Player Response	|Main game play interface | 1 | Challenge playback	| • The current round of color/sound sequences are played to challenge the users memory. <br/> • Each time a series of button presses is correctly entered, the same series of button presses is echoed back, but with an additional step |
 | Button - Player Response	|Main game play interface	|2| Player response to challenge playback | • The player presses the buttons in the same sequence as the previous challenge playback to win. <br/> 	• I hear a sound that corresponds to each button both when the series of button presses plays, and when I personally press a button. <br/>   • If the wrong button is pressed the player is notified and that series of button presses starts again to remind the player of the pattern so she can try again <br/>   • A win is a series of 20 correctly entered steps. I am notified of my victory, then the game starts over. |
+
+###Objects
+
+All Javascript code is contained in simon.js, but is subdivided into the
+following sections:
+
+* Initialization - The <pre>$(document).ready</pre> function definition which
+establishes the linkage between UI components like buttons to their
+corresponding event handlers.
+
+* Objects - The various JS objects designed to handle events and control the
+game flow. The objects in this program are:
+
+  * onOffButton - Contains the game state, the on/off button event handler, and
+helper functions.
+  * startButton - Contains the game mode, the start button event handler, and
+helper functions.
+  * strictButton - Contains the play mode (strict or normal), the strict button
+event handler, and helper functions.
+  * responseButton - This object is the main controller for game play. It
+contains the event handler for the four player response buttons - red, green,
+blue, and yellow buttons.
+  * gameEngine - Contains the colors in the current series and helper functions
+to perform tasks such as generating the next entry in the series, comparing the
+most recent player response, playing back the series (with sounds), etc.
