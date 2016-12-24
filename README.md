@@ -43,6 +43,21 @@ Meeting User Story 3 requires the following sound resources:
 ####Example Game Image:
 ![alt text](https://github.com/jdmedlock/simon/blob/master/Simon_Game_Example.png?raw=true "Simon Game Example")
 
+####Observations
+
+The example game image above could be improved by making a few modifications
+to the layout. The layout of the score display and game controls in the inner
+circle should be organized in a way that is both pleasing to the eye and makes
+it easy for the player to interact with them.
+
+Instead of clumping all controls in the lower half of the inner circle a more
+intuitive layout would place half of the controls, based on their total size,
+into the top and bottom third of the circle. The Simon game label occupying the
+middle third. Furthermore, all buttons should be in the same area with the
+On/Off button separated from the others to make it more prominent. There should
+also be sufficient separation between the buttons to prevent accidental
+presses.
+
 ###Model
 
 ####States & Modes
