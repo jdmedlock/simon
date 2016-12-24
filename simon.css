@@ -146,16 +146,16 @@ th {
 }
 
 .si-btn-circle {
-    background-color: hsl(0, 100%, 60%);
+    background-color: hsl(0, 100%, 60%) !important;
     color: black;
     margin-bottom: auto;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 5px;
+    margin-top: auto;
     height: 28px;
     position: absolute;
     vertical-align: middle;
-    width: 56px;
+    width: 64px;
 }
 
 .si-btn-circle-border {
@@ -171,7 +171,15 @@ th {
 }
 
 .si-btn-active {
-   background-color: green !important;
+   background-color: hsl(133, 100%, 35%) !important;
+}
+
+.si-btn-inactive {
+   background-color: hsl(0, 100%, 60%) !important;
+}
+
+#si-btn-onoff {
+  margin-top: 5px;
 }
 
 /* Player Response Buttons */
@@ -246,10 +254,47 @@ th {
 }
 
 .si-inset-circle-border {
-    border: 1px solid silver;
+    border: 1px solid transparent;
     border-radius: 160px;
     overflow: hidden;
     position: relative;
+}
+
+/* Player Response Button Separators */
+
+.si-player-resp-sep {
+   background: black;
+   background-color: black;
+	 position:absolute;
+   vertical-align: middle;
+}
+
+.si-player-resp-sep-top {
+   margin-top: 0;
+   margin-left: 47%;
+   height: 105px;
+   width: 20px;
+}
+
+.si-player-resp-sep-left {
+   margin-top: 47%;
+   margin-left: 0;
+   height: 20px;
+   width: 105px;
+}
+
+.si-player-resp-sep-right {
+   margin-top: 47%;
+   margin-left: 76%;
+   height: 20px;
+   width: 105px;
+}
+
+.si-player-resp-sep-bottom {
+   margin-top: 76%;
+   margin-left: 47%;
+   height: 105px;
+   width: 20px;
 }
 
 /* ---------------------------------------------
