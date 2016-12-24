@@ -373,27 +373,6 @@ th {
    width: min-content;
 }
 
-.si-game-results {
-    margin-top: 10px;
-    margin-left: 0;
-    margin-right: auto;
-    margin-bottom: 10px;
-    text-align: left;
-}
-
-.si-results-tbl {
-    color: black;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-    width: min-content;
-}
-
-.si-results-tbl.thead {
-    text-align: center;
-}
-
-
 /* ---------------------------------------------
    Page footer
    --------------------------------------------- */
