@@ -145,17 +145,23 @@ th {
     color: red;
 }
 
+.si-game-title > h2 {
+  color: black;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
 .si-btn-circle {
     background-color: hsl(0, 100%, 60%) !important;
     color: black;
-    margin-bottom: auto;
-    margin-left: auto;
-    margin-right: auto;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    margin-right: 1%;
     margin-top: auto;
-    height: 28px;
+    max-height: 2em;
     position: absolute;
     vertical-align: middle;
-    width: 64px;
+    max-width: min-content;
 }
 
 .si-btn-circle-border {
@@ -178,8 +184,13 @@ th {
    background-color: hsl(0, 100%, 60%) !important;
 }
 
+#si-btn-help {
+  background: hsl(199, 100%, 50%) !important;
+  margin-top: 0px;
+}
+
 #si-btn-onoff {
-  margin-top: 5px;
+  margin-top: 0px;
 }
 
 /* Player Response Buttons */
@@ -199,9 +210,11 @@ th {
 	height: 50%;
 	transition: background-color 0.2s ease-in-out;
 }
+
 .si-quarter:hover {
 	background-color: pink;
 }
+
 .si-quarter1 {
 	top: 0;
 	left: 0;
@@ -298,6 +311,90 @@ th {
 }
 
 /* ---------------------------------------------
+   Common Modal Dialog Settings
+   --------------------------------------------- */
+
+.si-dialog-open {
+    margin-top: 10px;
+}
+
+.si-dialog-body {
+    background-color: rgb(0, 0, 0);        /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);  /* Black w/ opacity */
+    display: none;        /* Hidden by default */
+    height: 100%;          /* Full height */
+    left: 0;
+    top: 0;
+    overflow: auto;       /* Enable scroll if needed */
+    padding-top: 15%;
+    position: fixed;      /* Stay in place */
+    width: 100%;          /* Full width */
+    vertical-align: middle;
+    z-index: 1;           /* Sit on top */
+}
+
+/* Modal Content */
+
+.si-dialog-content {
+    background-color: #fefefe;
+    border: 1px solid #888;
+    color: black;
+    height: 60%;
+    margin: auto;
+    padding: 10px;
+    text-align: left;
+    width: 60%;
+}
+
+.si-dialog-content>h3 {
+    color: black;
+}
+
+
+/* The Close Button */
+
+.si-dialog-close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.si-dialog-close:hover, .t3-dialog-close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* ---------------------------------------------
+   Modal help dialog
+   --------------------------------------------- */
+#si-help-dialog .si-dialog-content {
+   width: min-content;
+}
+
+.si-game-results {
+    margin-top: 10px;
+    margin-left: 0;
+    margin-right: auto;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.si-results-tbl {
+    color: black;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    width: min-content;
+}
+
+.si-results-tbl.thead {
+    text-align: center;
+}
+
+
+/* ---------------------------------------------
    Page footer
    --------------------------------------------- */
 
@@ -305,8 +402,9 @@ th {
     bottom: 0;
     background-color: #0A3C41;
     color: white;
-    height: 60px;
-    padding-left: 10px;
+    max-height: 60px;
+    margin-left: auto;
+    margin-right: auto;
     padding-bottom: 5px;
     position: absolute;
     width: 100%;
@@ -315,8 +413,4 @@ th {
 .si-bottom-bar a {
     color: white;
     font-size: small;
-    margin-left: 0px;
-    padding-top: 0px;
-    padding-left: 3px;
-    padding-right: 2px;
 }

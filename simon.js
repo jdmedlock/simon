@@ -42,6 +42,16 @@ $(document).ready(function() {
         strictButton.buttonPress();
     });
 
+    // Create a button handler for the help dialog
+    $("#si-btn-help").click(function(event) {
+        $("#si-help-dialog").css("display", "block");
+    });
+
+    // Create a button handler to close the help dialog
+    $(".si-dialog-close").click(function(event) {
+        $("#si-help-dialog").css("display", "none");
+    });
+
     // Create a button handler for the red player response button
     $("#si-btn-red").click(function(event) {
         console.log("Clicked on the red button");
