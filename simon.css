@@ -108,11 +108,11 @@ th {
 
 .si-inner-circle {
     background: silver;
-    height: 50%;
-    margin-top: 26.3%;
+    height: 52%;
+    margin-top: 25.4%;
     position: absolute;
     vertical-align: middle;
-    width: 50%;
+    width: 52%;
 }
 
 .si-inner-circle-border {
@@ -154,11 +154,15 @@ th {
 .si-btn-circle {
     background-color: hsl(0, 100%, 60%) !important;
     color: black;
-    margin-bottom: 1%;
-    margin-left: 1%;
-    margin-right: 1%;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: auto;
-    max-height: 2em;
+    max-height: 1.75em;
+    padding-top: 1%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
     position: absolute;
     vertical-align: middle;
     max-width: min-content;
@@ -166,7 +170,7 @@ th {
 
 .si-btn-circle-border {
     border: 1px solid saddlebrown;
-    border-radius: 10px;
+    border-radius: 5px;
     overflow: hidden;
     position: relative;
 }
@@ -184,14 +188,24 @@ th {
    background-color: hsl(0, 100%, 60%) !important;
 }
 
-#si-btn-help {
-  background: hsl(199, 100%, 50%) !important;
-  margin-top: 0px;
+#si-btn-onoff {
+  margin-top: 5%;
 }
 
-#si-btn-onoff {
-  margin-top: 0px;
+#si-btn-start {
+  margin-top: 2%;
+  margin-right: 12%;
 }
+
+#si-btn-strict {
+  margin-top: 2%;
+  margin-left: 13%;
+}
+#si-btn-help {
+  background: hsl(199, 100%, 50%) !important;
+  margin-top: 2%;
+}
+
 
 /* Player Response Buttons */
 
