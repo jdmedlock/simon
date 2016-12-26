@@ -225,36 +225,48 @@ th {
 	transition: background-color 0.2s ease-in-out;
 }
 
-.si-quarter:hover {
-	background-color: pink;
-}
-
-.si-quarter1 {
+.si-btn-red {
 	top: 0;
 	left: 0;
 	background-color: red;
 	border-radius: 100% 0 0 0;
 }
 
-.si-quarter2 {
+.si-btn-red:hover, .si-btn-red-hovered {
+	background-color: hotpink;
+}
+
+.si-btn-blue {
 	top: 0;
 	right: 0;
 	background-color: blue;
 	border-radius: 0 100% 0 0 ;
 }
 
-.si-quarter3 {
+.si-btn-blue:hover, .si-btn-blue-hovered {
+	background-color: lightblue;
+}
+
+.si-btn-yellow {
 	bottom: 0;
 	left: 0;
 	background-color: orange;
 	border-radius: 0 0 0 100%;
 }
 
-.si-quarter4 {
+.si-btn-yellow:hover, .si-btn-yellow-hovered {
+	background-color: lemonchiffon;
+}
+
+.si-btn-green {
 	bottom: 0;
 	right: 0;
 	background-color: green;
 	border-radius: 0 0 100% 0 ;
+}
+
+.si-btn-green:hover, .si-green-hovered {
+	background-color: lightgreen;
 }
 
 .si-cutout {

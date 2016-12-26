@@ -17,6 +17,7 @@
 // Returns: N/a
 $(document).ready(function() {
    console.clear();
+   onOffButton = new OnOffButton();
    onOffButton.setInitialState();
 
    // Create a button handler for the on/off button
@@ -72,20 +73,30 @@ $(document).ready(function() {
    });
 });
 
-// -------------------------------------------------------------
+// ---------------------------------------------------------------------------
 // Object Definitions
-// -------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
-//~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // On/Off Button Object
-//~~~~~~~~~~~~~~~~~~~~~
+//
+// Object variables:
+// - gameState: The state of the game - on or off
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const gameOn = true;
 const gameOff = false;
 
-let onOffButton = {
-   // Set the initial state
-   //
-   // Returns: N/a
+let onOffButton = null;
+
+function OnOffButton() {
+   this.gameState = gameOff;
+
+};
+
+// Set the initial state
+//
+// Returns: N/a
+OnOffButton.prototype = {
    setInitialState: () => {
       this.gameState = gameOff;
       $("#si-btn-onoff").removeClass("si-btn-active");
@@ -126,9 +137,9 @@ let onOffButton = {
    // Returns: N/a
    buttonPress: () => {
       if (this.gameState == gameOff) {
-         onOffButton.turnOn();
+         OnOffButton.turnOn();
       } else {
-         onOffButton.turnOff();
+         OnOffButton.turnOff();
       }
    },
 
@@ -140,9 +151,13 @@ let onOffButton = {
    }
 };
 
-//~~~~~~~~~~~~~~~~~~~~
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Start Button Object
-//~~~~~~~~~~~~~~~~~~~~
+//
+// Object variables:
+// - gameMode: The game mode - in-progress or waiting to start
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const gameInprogress = true;
 const gameWaiting = false;
 
@@ -155,6 +170,7 @@ let startButton = {
       $("#si-btn-start").removeClass("si-btn-inactive");
       $("#si-btn-start").addClass("si-btn-active");
       $("#si-btn-start").text("Stop");
+      gameEngine.createNewSeries();
    },
 
    // Stop the game
@@ -189,9 +205,12 @@ let startButton = {
    }
 };
 
-//~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Strict Button Object
-//~~~~~~~~~~~~~~~~~~~~~
+//
+// Object variables:
+// - playMode: The game play mode - normal or strict
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const playNormal = false;
 const playStrict = true;
 
@@ -237,25 +256,39 @@ let strictButton = {
 };
 
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Player Response Button Object
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
+// Object variables:
+// - None
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const colors = [{
    name: "red",
-   number: 0
+   number: 0,
+   buttonID: "si-btn-red"
 }, {
    name: "blue",
-   number: 1
+   number: 1,
+   buttonID: "si-btn-blue"
 }, {
    name: "green",
-   number: 2
+   number: 2,
+   buttonID: "si-btn-green"
 }, {
    name: "yellow",
-   number: 3
+   number: 3,
+   buttonID: "si-btn-yellow"
 }];
-const responseButtonPrefix = "si-btn-";
 
 let responseButton = {
+   // Highlight the button and play it's corresponding sound
+   //
+   // Returns: N/a
+   blinkNPlayButton: (buttonColor) => {
+      buttonID = this.getButtonID(buttonColor);
+      $("#"+buttonID).addClass(buttonID);
+   },
+
    // Add the button press to the current set of player responses.
    //
    // Pre-conditions:
@@ -266,34 +299,48 @@ let responseButton = {
    // Returns: N/a
    buttonPress: (thisButton) => {
       if (onOffButton.isGameOn()) {
-         let buttonColorName = $(thisButton).attr("id")
-            .buttonName.slice(responseButtonPrefix.length);
+         let buttonID = $(thisButton).attr("id");
          let buttonColorNum = colors.find((color, index, array) => {
-            return color.number === buttonColorName;
-         });
-         this.playerSeries.push(buttonColorNum);
+            return color.buttonID === buttonID;
+         }).number;
+         gameEngine.addNewPlayerResponse(buttonColorNum);
          gameEngine.play(buttonColorNum);
       }
    },
 
-   // Create a new player response series
+   // Get the user response button id matching that of the specified color.
    //
-   // Returns: N/a
-   newPlayerSeries: () => {
-      this.playerSeries = [];
+   // Return: User response button id
+   getButtonID: (buttonColor) => {
+      const buttonID = colors.find((color, index, array) => {
+         return color.name === buttonColor;
+      }).buttonID;
+      return $("#"+buttonID);
    }
-
 };
 
-//~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Game Engine Object
-//~~~~~~~~~~~~~~~~~~~
+//
+// Object variables:
+// - playerResponses: An array of player responses containing the button color
+//                    numbers the player has pressed
+// - playsInSeries:   An array of the challenges expressed as button color
+//                    numbers the player must respond with.
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const playLimit = 20;
 const playerResponseDiffers = 0;
 const playerResponseMatches = 1;
 const playerHasWon = 2;
 
 let gameEngine = {
+   // Add a new player response to the player response array
+   //
+   // Returns: N/a
+   addNewPlayerResponse: (buttonColorNum) => {
+      this.playerResponses.push(buttonColorNum);
+   },
+
    // Check the provided color against the entry in the series in the same
    // position to see if they match.
    //
@@ -316,7 +363,7 @@ let gameEngine = {
    // Returns: N/a
    createNewSeries: () => {
       this.playsInSeries = [];
-      responseButton.newPlayerSeries();
+      this.playerResponses = [];
       this.generateNewColor();
       this.replaySeries();
    },
@@ -337,13 +384,12 @@ let gameEngine = {
    // Generate a new color and add it to the current series
    // Attribution: Mozilla Developer Network Math.random (https://goo.gl/xIe4k)
    //
-   // Returns: New color
+   // Returns: N/a
    generateNewColor: () => {
       let min = Math.ceil(colorRed);
       let max = Math.floor(colorYellow);
       let newColor = Math.floor(Math.random() * (max - min + 1)) + min;
       this.playsInSeries.push(newColor);
-      return newColor;
    },
 
    // Play a turn by evaluating the most recent player response against the
@@ -365,6 +411,6 @@ let gameEngine = {
    //
    // Returns: N/a
    replaySeries: () => {
-
+      this.playsInSeries.forEach(responseButton.blinkNPlayButton(color));
    }
 };
