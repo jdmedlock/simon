@@ -1,9 +1,11 @@
-# simon
+# Simon
 
 ##Overview
 This project implements a virtual Simon game to fulfill the last of the
 Advanced Frontend Development Certificate offered by
 [freeCodeCamp](http://freeCodeCamp.com).
+
+My Simon implementation is hosted at http://mysimon.surge.sh
 
 [Simon](https://en.wikipedia.org/wiki/Simon_(game)) is an electronic game
 developed in the late-1970's which tests the players memory by requiring the
