@@ -8,6 +8,14 @@
 /* @flow */
 
 "use strict";
+
+let onOffButton = null;
+let startButton = null;
+let strictButton = null;
+let responseButton = null;
+let gameEngine = null;
+
+
 // -------------------------------------------------------------
 // Initialization function(s)
 // -------------------------------------------------------------
@@ -18,6 +26,10 @@
 $(document).ready(function() {
    console.clear();
    onOffButton = new OnOffButton();
+   startButton = new StartButton();
+   strictButton = new StrictButton();
+   responseButton = new ResponseButton();
+   gameEngine = new GameEngine();
    onOffButton.setInitialState();
 
    // Create a button handler for the on/off button
@@ -86,18 +98,15 @@ $(document).ready(function() {
 const gameOn = true;
 const gameOff = false;
 
-let onOffButton = null;
-
 function OnOffButton() {
    this.gameState = gameOff;
-
 };
 
-// Set the initial state
-//
-// Returns: N/a
 OnOffButton.prototype = {
-   setInitialState: () => {
+  // Set the initial state
+  //
+  // Returns: N/a
+   setInitialState: function() {
       this.gameState = gameOff;
       $("#si-btn-onoff").removeClass("si-btn-active");
       $("#si-btn-onoff").addClass("si-btn-inactive");
@@ -109,7 +118,7 @@ OnOffButton.prototype = {
    // Turn the game off
    //
    // Returns: N/a
-   turnOff: () => {
+   turnOff: function() {
       this.gameState = gameOff;
       $("#si-btn-onoff").removeClass("si-btn-active");
       $("#si-btn-onoff").addClass("si-btn-inactive");
@@ -121,7 +130,7 @@ OnOffButton.prototype = {
    // Turn the game on
    //
    // Returns: N/a
-   turnOn: () => {
+   turnOn: function() {
       this.gameState = gameOn;
       $("#si-btn-onoff").removeClass("si-btn-inactive");
       $("#si-btn-onoff").addClass("si-btn-active");
@@ -135,18 +144,18 @@ OnOffButton.prototype = {
    // reset and the score will be set to '00'.
    //
    // Returns: N/a
-   buttonPress: () => {
+   buttonPress: function() {
       if (this.gameState == gameOff) {
-         OnOffButton.turnOn();
+         this.turnOn();
       } else {
-         OnOffButton.turnOff();
+         this.turnOff();
       }
    },
 
    // Determine if the game is on or off.
    //
    // Returns: True if the game is on, false if it is off.
-   isGameOn: () => {
+   isGameOn: function()  {
       return this.gameState;
    }
 };
@@ -161,11 +170,15 @@ OnOffButton.prototype = {
 const gameInprogress = true;
 const gameWaiting = false;
 
-let startButton = {
+function StartButton() {
+   this.gameMode = gameWaiting;
+};
+
+StartButton.prototype = {
    // Start a new game
    //
    // Returns: N/a
-   newGame: () => {
+   newGame: function() {
       this.gameMode = gameInprogress;
       $("#si-btn-start").removeClass("si-btn-inactive");
       $("#si-btn-start").addClass("si-btn-active");
@@ -176,7 +189,7 @@ let startButton = {
    // Stop the game
    //
    // Returns: N/a
-   stopGame: () => {
+   stopGame: function() {
       this.gameMode = gameWaiting;
       $("#si-btn-start").removeClass("si-btn-active");
       $("#si-btn-start").addClass("si-btn-inactive");
@@ -187,7 +200,7 @@ let startButton = {
    // the score will be set to '00'.
    //
    // Returns: N/a
-   buttonPress: () => {
+   buttonPress: function() {
       if (onOffButton.isGameOn()) {
          if (this.gameMode == gameWaiting) {
             startButton.newGame();
@@ -200,7 +213,7 @@ let startButton = {
    // Determine if the game is in progress.
    //
    // Returns: True if a game is in progress, false if it is waiting to start.
-   isInProgress: () => {
+   isInProgress: function() {
       return this.gameMode;
    }
 };
@@ -214,11 +227,15 @@ let startButton = {
 const playNormal = false;
 const playStrict = true;
 
-let strictButton = {
+function StrictButton() {
+   this.playMode = playNormal;
+};
+
+StrictButton.prototype = {
    // Enable strict play mode
    //
    // Returns: N/a
-   strictGame: () => {
+   strictGame: function() {
       this.playMode = playStrict;
       $("#si-btn-strict").removeClass("si-btn-inactive");
       $("#si-btn-strict").addClass("si-btn-active");
@@ -227,7 +244,7 @@ let strictButton = {
    // Enable normal play mode
    //
    // Returns: N/a
-   normalGame: () => {
+   normalGame: function() {
       this.playMode = playNormal;
       $("#si-btn-strict").removeClass("si-btn-active");
       $("#si-btn-strict").addClass("si-btn-inactive");
@@ -236,7 +253,7 @@ let strictButton = {
    // Toggles between normal and strict game play
    //
    // Returns: N/a
-   buttonPress: () => {
+   buttonPress: function() {
       if (onOffButton.isGameOn()) {
          if (this.playMode == playNormal) {
             strictButton.strictGame();
@@ -250,7 +267,7 @@ let strictButton = {
    //
    // Returns: True if a game is to be played strictly, false if it is to be
    //          played normally.
-   isStrict: () => {
+   isStrict: function() {
       return this.playMode;
    }
 };
@@ -262,31 +279,40 @@ let strictButton = {
 // Object variables:
 // - None
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const colorRed = 0;
+const colorBlue = 1;
+const colorGreen = 2;
+const colorYellow = 3;
+
 const colors = [{
    name: "red",
-   number: 0,
+   number: colorRed,
    buttonID: "si-btn-red"
 }, {
    name: "blue",
-   number: 1,
+   number: colorBlue,
    buttonID: "si-btn-blue"
 }, {
    name: "green",
-   number: 2,
+   number: colorGreen,
    buttonID: "si-btn-green"
 }, {
    name: "yellow",
-   number: 3,
+   number: colorYellow,
    buttonID: "si-btn-yellow"
 }];
 
-let responseButton = {
+function ResponseButton() {
+};
+
+ResponseButton.prototype = {
    // Highlight the button and play it's corresponding sound
    //
    // Returns: N/a
-   blinkNPlayButton: (buttonColor) => {
-      buttonID = this.getButtonID(buttonColor);
-      $("#"+buttonID).addClass(buttonID);
+   blinkNPlayButton: function(buttonColor) {
+      const buttonID = this.getButtonID(buttonColor);
+      $("."+buttonID).addClass(buttonID+".hovered");
+      //TODO: Add sound playback
    },
 
    // Add the button press to the current set of player responses.
@@ -297,7 +323,7 @@ let responseButton = {
    //       than the game series.
    //
    // Returns: N/a
-   buttonPress: (thisButton) => {
+   buttonPress: function(thisButton) {
       if (onOffButton.isGameOn()) {
          let buttonID = $(thisButton).attr("id");
          let buttonColorNum = colors.find((color, index, array) => {
@@ -311,11 +337,10 @@ let responseButton = {
    // Get the user response button id matching that of the specified color.
    //
    // Return: User response button id
-   getButtonID: (buttonColor) => {
-      const buttonID = colors.find((color, index, array) => {
-         return color.name === buttonColor;
+   getButtonID: function(buttonColorNum) {
+      return colors.find((color, index, array) => {
+         return color.number === buttonColorNum;
       }).buttonID;
-      return $("#"+buttonID);
    }
 };
 
@@ -333,11 +358,16 @@ const playerResponseDiffers = 0;
 const playerResponseMatches = 1;
 const playerHasWon = 2;
 
-let gameEngine = {
+function GameEngine() {
+   this.playerResponses = [];
+   this.playsInSeries = [];
+};
+
+GameEngine.prototype = {
    // Add a new player response to the player response array
    //
    // Returns: N/a
-   addNewPlayerResponse: (buttonColorNum) => {
+   addNewPlayerResponse: function(buttonColorNum) {
       this.playerResponses.push(buttonColorNum);
    },
 
@@ -348,8 +378,8 @@ let gameEngine = {
    //              the series
    //          playerHasWon if the response matches after 20 consecutive matches
    //          playerResponseDiffers if it doesn't match.
-   checkPlayerResponse: (position, playerColorNum) => {
-      if (this.playsInSeries[position] === playerColor) {
+   checkPlayerResponse: function(position, playerColorNum) {
+      if (this.playsInSeries[position] === playerColorNum) {
          if (this.playsInSeries.length === playLimit) {
             return playerHasWon;
          }
@@ -361,7 +391,7 @@ let gameEngine = {
    // Create a new series
    //
    // Returns: N/a
-   createNewSeries: () => {
+   createNewSeries: function() {
       this.playsInSeries = [];
       this.playerResponses = [];
       this.generateNewColor();
@@ -374,7 +404,7 @@ let gameEngine = {
    // Returns: The most recent color added to the series (as colorRed,
    //          colorBlue, colorGreen, or colorYellow). Null if the series is
    //          empty.
-   getLastInSeries: () => {
+   getLastInSeries: function() {
       if (this.playsInSeries.length > 0) {
          return this.playsInSeries[length - 1];
       }
@@ -385,7 +415,7 @@ let gameEngine = {
    // Attribution: Mozilla Developer Network Math.random (https://goo.gl/xIe4k)
    //
    // Returns: N/a
-   generateNewColor: () => {
+   generateNewColor: function() {
       let min = Math.ceil(colorRed);
       let max = Math.floor(colorYellow);
       let newColor = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -400,8 +430,8 @@ let gameEngine = {
    //       entries.
    //
    // Returns: N/a
-   play: (buttonColorNum) => {
-      let playStatus = this.checkPlayerResponse((responseButton.playerSeries.length - 1), buttonColorNum);
+   play: function(buttonColorNum) {
+      let playStatus = this.checkPlayerResponse((this.playerResponses.length - 1), buttonColorNum);
 
 
       this.replaySeries();
@@ -410,7 +440,9 @@ let gameEngine = {
    // Replay the current series
    //
    // Returns: N/a
-   replaySeries: () => {
-      this.playsInSeries.forEach(responseButton.blinkNPlayButton(color));
+   replaySeries: function() {
+      this.playsInSeries.forEach((color, index, array) => {
+        responseButton.blinkNPlayButton(color);
+      });
    }
 };
