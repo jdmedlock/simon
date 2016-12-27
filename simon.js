@@ -13,6 +13,7 @@ let onOffButton = null;
 let startButton = null;
 let strictButton = null;
 let responseButton = null;
+let scoreDisplay = null;
 let gameEngine = null;
 
 
@@ -29,6 +30,7 @@ $(document).ready(function() {
    startButton = new StartButton();
    strictButton = new StrictButton();
    responseButton = new ResponseButton();
+   scoreDisplay = new ScoreDisplay();
    gameEngine = new GameEngine();
    onOffButton.setInitialState();
 
@@ -90,6 +92,54 @@ $(document).ready(function() {
 // ---------------------------------------------------------------------------
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Score Display Object
+//
+// Object variables:
+// - gameScore: The number of turns successfully passed in the series
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+function ScoreDisplay() {
+   this.gameScore = 0;
+};
+
+ScoreDisplay.prototype = {
+   // Alert that an error has occurred by replacing the current score with
+   // two exclamation points ('!!') and flashing the score for 3 seconds.
+   //
+   // Returns: N/a
+   errorAlert: function() {
+      let saveScore = this.gameScore;
+      this.updateScore("!!");
+      this.gameScore = saveScore;
+   },
+
+   // Flash the score for the specified number of seconds
+   //
+   // Returns: N/a
+   flash: function(durationSeconds) {
+      $(".si-score").addClass("si-score-flash");
+      gameEngine.pause(durationSeconds).then(() => {
+         $(".si-score").removeClass("si-score-flash");
+      });
+   },
+
+   // Set the initial state
+   //
+   // Returns: N/a
+   setInitialState: function() {
+      this.updateScore(0);
+   },
+
+   // Update the score value
+   //
+   // Returns: N/a
+   updateScore: function(newScore) {
+       this.gameScore = newScore;
+       $("#si-score").text(this.gameScore);
+    },
+};
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // On/Off Button Object
 //
 // Object variables:
@@ -135,7 +185,6 @@ OnOffButton.prototype = {
       $("#si-btn-onoff").removeClass("si-btn-inactive");
       $("#si-btn-onoff").addClass("si-btn-active");
       $("#si-btn-onoff").text("Off");
-      startButton.stopGame();
       strictButton.normalGame();
    },
 
@@ -194,6 +243,7 @@ StartButton.prototype = {
       $("#si-btn-start").removeClass("si-btn-active");
       $("#si-btn-start").addClass("si-btn-inactive");
       $("#si-btn-start").text("Start");
+      scoreDisplay.setInitialState();
    },
 
    // Starts and stops game play. When the state changes
@@ -284,35 +334,42 @@ const colorBlue = 1;
 const colorGreen = 2;
 const colorYellow = 3;
 
-const colors = [{
-   name: "red",
-   number: colorRed,
-   buttonID: "si-btn-red"
-}, {
-   name: "blue",
-   number: colorBlue,
-   buttonID: "si-btn-blue"
-}, {
-   name: "green",
-   number: colorGreen,
-   buttonID: "si-btn-green"
-}, {
-   name: "yellow",
-   number: colorYellow,
-   buttonID: "si-btn-yellow"
-}];
-
 function ResponseButton() {
+   this.colors = [{
+      name: "red",
+      number: colorRed,
+      buttonID: "si-btn-red",
+      sound: "simonSound1.mp3"
+   }, {
+      name: "blue",
+      number: colorBlue,
+      buttonID: "si-btn-blue",
+      sound: "simonSound2.mp3"
+   }, {
+      name: "green",
+      number: colorGreen,
+      buttonID: "si-btn-green",
+      sound: "simonSound3.mp3"
+   }, {
+      name: "yellow",
+      number: colorYellow,
+      buttonID: "si-btn-yellow",
+      sound: "simonSound4.mp3"
+   }];
 };
 
 ResponseButton.prototype = {
    // Highlight the button and play it's corresponding sound
    //
    // Returns: N/a
-   blinkNPlayButton: function(buttonColor) {
-      const buttonID = this.getButtonID(buttonColor);
-      $("."+buttonID).addClass(buttonID+".hovered");
-      //TODO: Add sound playback
+   blinkNPlayButton: function(buttonColorNum) {
+      const buttonID = this.getButtonID(buttonColorNum);
+      $("."+buttonID).addClass(buttonID+"-hovered");
+      var audio = new Audio(this.colors[buttonColorNum].sound);
+      audio.play();
+      gameEngine.pause(.25).then(() => {
+         $("."+buttonID).removeClass(buttonID+"-hovered");
+      });
    },
 
    // Add the button press to the current set of player responses.
@@ -326,9 +383,10 @@ ResponseButton.prototype = {
    buttonPress: function(thisButton) {
       if (onOffButton.isGameOn()) {
          let buttonID = $(thisButton).attr("id");
-         let buttonColorNum = colors.find((color, index, array) => {
+         let buttonColorNum = this.colors.find((color, index, array) => {
             return color.buttonID === buttonID;
          }).number;
+         this.blinkNPlayButton(buttonColorNum);
          gameEngine.addNewPlayerResponse(buttonColorNum);
          gameEngine.play(buttonColorNum);
       }
@@ -338,7 +396,7 @@ ResponseButton.prototype = {
    //
    // Return: User response button id
    getButtonID: function(buttonColorNum) {
-      return colors.find((color, index, array) => {
+      return this.colors.find((color, index, array) => {
          return color.number === buttonColorNum;
       }).buttonID;
    }
@@ -422,6 +480,17 @@ GameEngine.prototype = {
       this.playsInSeries.push(newColor);
    },
 
+   // Pause execution for n seconds
+   //
+   // Returns: Promise when the timeout has expired
+   pause: function(waitSeconds) {
+      return new Promise(function(resolve, reject) {
+         setTimeout(() => {
+            resolve("Pause of " + waitSeconds + " completed.");
+         }, waitSeconds * 1000);
+      });
+   },
+
    // Play a turn by evaluating the most recent player response against the
    // most recent computer generated color.
    //
@@ -432,7 +501,32 @@ GameEngine.prototype = {
    // Returns: N/a
    play: function(buttonColorNum) {
       let playStatus = this.checkPlayerResponse((this.playerResponses.length - 1), buttonColorNum);
+      switch (playStatus) {
+         case playerResponseDiffers:
+            scoreDisplay.errorAlert();
 
+            // Create a new series of the same number of turns as the current
+            // series if we are in Strict mode.
+            if (strictButton.isStrict()) {
+               let noPlays = this.playsInSeries.length;
+               this.playsInSeries = [];
+               this.playerResponses = [];
+               for (let i = 0; i < noPlays; i++){
+                  this.generateNewColor();
+               }
+            }
+            this.replaySeries();
+            break;
+         case playerResponseMatches:
+            this.generateNewColor();
+            this.replaySeries();
+            break;
+         case playerHasWon:
+            scoreDisplay.flash(3);
+            break;
+         default:
+            console.log("Error in gameEngine.play - unknown playStatus="+playStatus);
+      };
 
       this.replaySeries();
    },

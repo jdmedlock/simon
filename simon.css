@@ -145,6 +145,14 @@ th {
     color: red;
 }
 
+.si-score-flash {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes si-score-flash {  
+  50% { opacity: 0; }
+}
+
 .si-game-title > h2 {
   color: black;
   margin-top: 0px;
