@@ -146,10 +146,10 @@ th {
 }
 
 .si-score-flash {
-  animation: blinker 1s linear infinite;
+  animation: si-score-blink 1s linear infinite;
 }
 
-@keyframes si-score-flash {  
+@keyframes si-score-blink {  
   50% { opacity: 0; }
 }
 
