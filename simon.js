@@ -505,11 +505,9 @@ GameEngine.prototype = {
    //
    // Returns: Promise when the timeout has expired
    pause: function(waitSeconds) {
+      const waitForSecs = waitSeconds * 1000;
       return new Promise(function(resolve, reject) {
-         const waitForSecs = waitSeconds * 1000;
-         setTimeout(() => {
-            resolve("Pause of " + waitSeconds + " completed.");
-         }, waitForSecs);
+         setTimeout(resolve, waitForSecs);
       });
    },
 
@@ -568,11 +566,11 @@ GameEngine.prototype = {
    // Returns: N/a
    replaySeries: function() {
       this.turnsInSeries.forEach(function(buttonColorNum) {
-         responseButton.blinkNPlayButton(buttonColorNum);
-         gameEngine.pause(1)
-            .then((resolutionVal) => {
+         gameEngine.pause(1.5)
+            .then(() => {
+               responseButton.blinkNPlayButton(buttonColorNum);
                console.log("gameEngine.replaySeries spacing gap over");
-            }).catch((rejectionVal) => {
+            }).catch(() => {
                console.log("gameEngine.replaySeries spacing gap error");
             });
       });
