@@ -402,12 +402,6 @@ ResponseButton.prototype = {
             return color.buttonID === buttonID;
          }).number;
          this.blinkNPlayButton(buttonColorNum);
-         /*
-         this.blinkNPlayButton(buttonColorNum)
-            .then((resolutionVal) => {
-               console.log("responseButton.buttonPress color=" + buttonColorNum + " Promise resolved=" + resolutionVal);
-            });
-         */
          gameEngine.play(buttonColorNum);
       }
    },
@@ -565,14 +559,58 @@ GameEngine.prototype = {
    //
    // Returns: N/a
    replaySeries: function() {
-      this.turnsInSeries.forEach(function(buttonColorNum) {
-         gameEngine.pause(1.5)
-            .then(() => {
-               responseButton.blinkNPlayButton(buttonColorNum);
-               console.log("gameEngine.replaySeries spacing gap over");
-            }).catch(() => {
-               console.log("gameEngine.replaySeries spacing gap error");
-            });
-      });
+     gameEngine.replayLoop(this.turnsInSeries.length, function(loop) {
+       setTimeout(function() {
+         let i = loop.iteration();
+         responseButton.blinkNPlayButton(gameEngine.turnsInSeries[i]);
+         loop.next();
+       }, 1000);
+     }, function() {
+       console.log('done');
+     });
+   },
+
+   // Synchronously invoke the function specified by the 'process' parameter
+   // for a specified number of times.
+   //
+   // Attribution: https://goo.gl/tccqQD
+   //
+   // Parameters:
+   // - iterations: the number of iterations to carry out
+   // - process:    the code/function we're running for every iteration
+   // - exit:       an optional callback to carry out once the loop has completed
+   //
+   // Returns: N/a
+   replayLoop: function(iterations, process, exit) {
+     let index = 0;
+     let done = false;
+     let shouldExit = false;
+     let loop = {
+         next:function(){
+             if(done){
+                 if(shouldExit && exit){
+                     return exit(); // Exit if we're done
+                 }
+             }
+             // If we're not finished
+             if(index < iterations){
+                 index++; // Increment our index
+                 process(loop); // Run our process, pass in the loop
+             // Otherwise we're done
+             } else {
+                 done = true; // Make sure we say we're done
+                 if(exit) exit(); // Call the callback on exit
+             }
+         },
+         iteration:function(){
+             return index - 1; // Return the loop number we're on
+         },
+         break:function(end){
+             done = true; // End the loop
+             shouldExit = end; // Passing end as true means we still call the exit callback
+         }
+      };
+      loop.next();
+      return loop;
    }
 };
