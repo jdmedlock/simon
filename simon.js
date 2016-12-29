@@ -369,8 +369,8 @@ ResponseButton.prototype = {
     blinkNPlayButton: function(buttonColorNum) {
         const buttonID = this.getButtonID(buttonColorNum);
         var audio = new Audio(this.colors[buttonColorNum].sound);
-        audio.play();
         $("." + buttonID).addClass(buttonID + "-highlighted");
+        audio.play();
         gameEngine.pause(.5)
             .then((resolutionVal) => {
                 $("." + buttonID).removeClass(buttonID + "-highlighted");
