@@ -547,7 +547,10 @@ GameEngine.prototype = {
     //
     // Returns: N/a
     replaySeries: function() {
-        gameEngine.replayLoop(this.turnsInSeries.length, function(loop) {
+        // Delay for one second prior to replay
+        setTimeout(function() {
+        // Replay the turns in this series
+        gameEngine.replayLoop(gameEngine.turnsInSeries.length, function(loop) {
             setTimeout(function() {
                 let i = loop.iteration();
                 responseButton.blinkNPlayButton(gameEngine.turnsInSeries[i]);
@@ -556,6 +559,7 @@ GameEngine.prototype = {
         }, function() {
             return null;
         });
+      }, 1000);
     },
 
     // Synchronously invoke the function specified by the 'process' parameter
