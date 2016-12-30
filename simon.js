@@ -33,6 +33,7 @@ $(document).ready(function() {
     scoreDisplay = new ScoreDisplay();
     gameEngine = new GameEngine();
     onOffButton.setInitialState();
+    responseButton.setupSounds();
 
     // Create a button handler for the on/off button
     $("#si-btn-onoff").click(function(event) {
@@ -368,9 +369,10 @@ ResponseButton.prototype = {
     // Returns: Promise when completed
     blinkNPlayButton: function(buttonColorNum) {
         const buttonID = this.getButtonID(buttonColorNum);
-        var audio = new Audio(this.colors[buttonColorNum].sound);
+        //var audio = new Audio(this.colors[buttonColorNum].sound);
         $("." + buttonID).addClass(buttonID + "-highlighted");
-        audio.play();
+        //audio.play();
+        createjs.Sound.play(this.colors[buttonColorNum].name);
         gameEngine.pause(.5)
             .then((resolutionVal) => {
                 $("." + buttonID).removeClass(buttonID + "-highlighted");
@@ -427,6 +429,15 @@ ResponseButton.prototype = {
     // Returns: N/a
     setInitialState: function() {
         this.playerResponses = [];
+    },
+
+    // Set up sounds for playback using the SoundJS library
+    //
+    // Returns: N/a
+    setupSounds: function() {
+      this.colors.forEach((color) => {
+        createjs.Sound.registerSound(color.sound, color.name);
+      });
     }
 };
 
