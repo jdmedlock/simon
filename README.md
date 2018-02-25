@@ -1,6 +1,6 @@
 # Simon
 
-##Overview
+## Overview
 This project implements a virtual Simon game to fulfill the last of the
 Advanced Frontend Development Certificate offered by
 [freeCodeCamp](http://freeCodeCamp.com).
@@ -17,7 +17,7 @@ round of play.
 An example of a Simon simulator can be found
 [here](https://codepen.io/FreeCodeCamp/full/obYBjE) .
 
-###Requirements
+### Requirements
 A successful implementation of the Simon game must satisfy the following
 user stories:
 
@@ -30,7 +30,7 @@ user stories:
 7. I can play in strict mode where if I get a button press wrong, it notifies me that I have done so, and the game restarts at a new random series of button presses.
 8. I can win the game by getting a series of 20 steps correct. I am notified of my victory, then the game starts over.
 
-###Resources
+### Resources
 Meeting User Story 3 requires the following sound resources:
 
 * https://s3.amazonaws.com/freecodecamp/simonSound1.mp3  
@@ -38,14 +38,14 @@ Meeting User Story 3 requires the following sound resources:
 * https://s3.amazonaws.com/freecodecamp/simonSound3.mp3
 * https://s3.amazonaws.com/freecodecamp/simonSound4.mp3
 
-##Design
+## Design
 
-###User Interface
+### User Interface
 
-####Example Game Image:
+#### Example Game Image:
 ![alt text](https://github.com/jdmedlock/simon/blob/master/Simon_Game_Example.png?raw=true "Simon Game Example")
 
-####Observations
+#### Observations
 
 The example game image above could be improved by making a few modifications
 to the layout. The layout of the score display and game controls in the inner
@@ -60,9 +60,9 @@ On/Off button separated from the others to make it more prominent. There should
 also be sufficient separation between the buttons to prevent accidental
 presses.
 
-###Model
+### Model
 
-####States & Modes
+#### States & Modes
 
 The terms state and mode are both used to define the condition of the game at
 any point in time. The difference between the two is that a state is the
@@ -88,7 +88,7 @@ as they are of different categories.
 | Play-Normal	   | Normal game play rules are in effect |
 | Play-Strict	   | Strict game play rules are in effect |
 
-####State/Mode Transitions
+#### State/Mode Transitions
 
 |Starting <br/>State/Mode	| Allowable Actions	| Next State/Mode |
 |------------|--------------------|-----------------|
@@ -97,7 +97,7 @@ as they are of different categories.
 |Play-Normal | • Start <br/> • Strict (enable) <br/> • Off <br/> • Game play | • Play-Normal <br/> • Play-Strict <br/> • Game-Off |
 |Play-Strict | • Start <br/> • Strict (disable) <br/> • Off <br/> • Game play	| • Play-Normal <br/> • Play-Strict <br/> • Game-Off |
 
-####User Interface Rules:
+#### User Interface Rules:
 
 | Component	      | Purpose	            | # | Action                        | Desired Result    |
 |-----------------|-----------------------|---|-------------------------------|-------------------|
@@ -111,7 +111,7 @@ as they are of different categories.
 | Button - Player Response	|Main game play interface | 1 | Challenge playback	| • The current round of color/sound sequences are played to challenge the users memory. <br/> • Each time a series of button presses is correctly entered, the same series of button presses is echoed back, but with an additional step |
 | Button - Player Response	|Main game play interface	|2| Player response to challenge playback | • The player presses the buttons in the same sequence as the previous challenge playback to win. <br/> 	• I hear a sound that corresponds to each button both when the series of button presses plays, and when I personally press a button. <br/>   • If the wrong button is pressed the player is notified and that series of button presses starts again to remind the player of the pattern so she can try again <br/>   • A win is a series of 20 correctly entered steps. I am notified of my victory, then the game starts over. |
 
-###Objects
+### Objects
 
 All Javascript code is contained in simon.js, but is subdivided into the
 following sections:
